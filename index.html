@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Management Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      background: #f4f7fc;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #1e1e2f;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+    }
+
+    .nav-link {
+      padding: 12px 10px;
+      margin: 5px 0;
+      background: transparent;
+      color: #ccc;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background: #2a2a40;
+      color: #fff;
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    .card p {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1e88e5;
+    }
+
+    /* Chart Placeholder */
+    .chart {
+      margin-top: 40px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      .sidebar {
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>DashPanel</h2>
+    <button class="nav-link active">Dashboard</button>
+    <button class="nav-link">Projects</button>
+    <button class="nav-link">Tasks</button>
+    <button class="nav-link">Teams</button>
+    <button class="nav-link">Settings</button>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="header">
+      <h1>Welcome, Manager</h1>
+    </div>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Total Projects</h3>
+        <p id="projects-count">8</p>
+      </div>
+      <div class="card">
+        <h3>Active Tasks</h3>
+        <p id="tasks-count">24</p>
+      </div>
+      <div class="card">
+        <h3>Team Members</h3>
+        <p id="team-count">12</p>
+      </div>
+      <div class="card">
+        <h3>Pending Reviews</h3>
+        <p id="reviews-count">5</p>
+      </div>
+    </section>
+
+    <div class="chart">
+      📊 Chart coming soon (integrate Chart.js or D3.js here)
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    // Toggle active class for sidebar buttons
+    const navLinks = document.querySelectorAll(".nav-link");
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.forEach(btn => btn.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+
+    // Simulate dynamic data loading
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        document.getElementById("projects-count").textContent = "10";
+        document.getElementById("tasks-count").textContent = "30";
+        document.getElementById("team-count").textContent = "14";
+        document.getElementById("reviews-count").textContent = "3";
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
